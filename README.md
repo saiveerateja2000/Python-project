@@ -1,5 +1,15 @@
 # Master DevOps Project
 
+## Current Repository Implementation
+
+The Stage 1 project source code is now scaffolded in this repository:
+
+- Frontend: `/home/runner/work/Python-project/Python-project/frontend`
+- Users service: `/home/runner/work/Python-project/Python-project/services/users_service`
+- Orders service: `/home/runner/work/Python-project/Python-project/services/orders_service`
+- Shared PostgreSQL schema: `/home/runner/work/Python-project/Python-project/database/init.sql`
+- Stage 1 guide: `/home/runner/work/Python-project/Python-project/docs/stage1_local_setup_guide.md`
+
 ## Role and Mentoring Expectation
 
 Act as a Principal DevOps Engineer, Platform Engineer, Site Reliability Engineer, Cloud Architect, Kubernetes Administrator, and Senior Software Engineer with over 20 years of production experience.

@@ -1,0 +1,45 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  color: #111;
+  background-color: #f4f6f8;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+section {
+  background: #fff;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+input,
+select,
+button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.error {
+  color: #9f1239;
+  font-weight: 600;
+}
