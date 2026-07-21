@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import Any
 
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from psycopg2 import DatabaseError
 from psycopg2.extras import RealDictCursor
 import psycopg2
@@ -80,6 +81,7 @@ class UserRepository:
 
 def create_app(repository: UserRepository | None = None) -> Flask:
     app = Flask(__name__)
+    CORS(app)
     logger = setup_logger("users-service")
 
     database_url = os.getenv("DATABASE_URL")
