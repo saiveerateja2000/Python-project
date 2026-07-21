@@ -9,6 +9,7 @@ from psycopg2 import DatabaseError
 from psycopg2.extras import RealDictCursor
 import psycopg2
 import requests
+from werkzeug.exceptions import HTTPException
 
 
 class JsonFormatter(logging.Formatter):
@@ -132,6 +133,11 @@ def create_app(
     def handle_database_error(error: DatabaseError):
         logger.exception("Database error")
         return {"error": "Database operation failed", "details": str(error)}, 500
+
+    @app.errorhandler(HTTPException)
+    def handle_http_error(error: HTTPException):
+        logger.info("HTTP error status=%s path=%s", error.code, request.path)
+        return {"error": error.name, "details": error.description}, error.code
 
     @app.errorhandler(requests.RequestException)
     def handle_http_error(error: requests.RequestException):

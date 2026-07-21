@@ -8,6 +8,7 @@ from flask import Flask, jsonify, request
 from psycopg2 import DatabaseError
 from psycopg2.extras import RealDictCursor
 import psycopg2
+from werkzeug.exceptions import HTTPException
 
 
 class JsonFormatter(logging.Formatter):
@@ -126,6 +127,11 @@ def create_app(repository: UserRepository | None = None) -> Flask:
     def handle_database_error(error: DatabaseError):
         logger.exception("Database error")
         return {"error": "Database operation failed", "details": str(error)}, 500
+
+    @app.errorhandler(HTTPException)
+    def handle_http_error(error: HTTPException):
+        logger.info("HTTP error status=%s path=%s", error.code, request.path)
+        return {"error": error.name, "details": error.description}, error.code
 
     @app.errorhandler(Exception)
     def handle_unexpected_error(error: Exception):
