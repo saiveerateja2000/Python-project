@@ -22,7 +22,7 @@ EXPOSE 5001
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD python -c "import requests; requests.get('http://localhost:5001/health', timeout=2)" || exit 1
+  CMD python -c "import sys, urllib.request; urllib.request.urlopen('http://127.0.0.1:5001/health', timeout=2); sys.exit(0)"
 
 # Run application
 CMD ["python", "-u", "app.py"]
